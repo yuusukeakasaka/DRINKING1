@@ -10,6 +10,32 @@
   </head>
 
   <body>
+    <header>
+      <% if user_signed_in? %>
+      <li>
+        マイページ
+      </li>
+      <li>
+        記事一覧
+      </li>
+      <li>
+        募集一覧
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+      <% else %>
+      <li>
+        About
+      </li>
+      <li>
+        記事一覧
+      </li>
+      <li>
+        ログイン
+      </li>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
