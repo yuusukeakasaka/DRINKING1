@@ -1,1 +1,13 @@
-<h1>エディット</h1>
+<h1>プロフィール編集</h1>
+<%= form_with model:@user, local:true do |f| %>
+<h3>アイコン</h3>
+
+ <h3>ニックネーム</h3>
+<%= f.text_field :name, autofocus: true, placeholder:"名前"%>
+
+<h3>紹介文</h3>
+<%= f.text_field :introduction, autofocus: true, placeholder:"自己紹介を書いてください。" %>
+
+<%= f.submit "変更を保存" %>
+
+ <% end %>
