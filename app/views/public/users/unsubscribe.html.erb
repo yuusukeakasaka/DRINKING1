@@ -1,0 +1,7 @@
+<h1>退会</h1>
+
+<h3>本当に退会しますか？</h3>
+<div>退会すると今までの投稿が見れなくなります。</div>
+
+<%= link_to "退会しない", user_path %>
+<%= link_to "退会する", user_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？" %>
