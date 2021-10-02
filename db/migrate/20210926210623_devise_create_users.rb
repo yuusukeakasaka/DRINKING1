@@ -33,7 +33,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
       t.string :name
-      t.string :icon_image
+      t.string :icon_image_id
       t.string :introduction
       t.boolean :is_active, default: true
       t.datetime :created_at

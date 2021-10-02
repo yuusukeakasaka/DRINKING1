@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_09_26_210623) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
-    t.string "icon_image"
+    t.string "icon_image_id"
     t.string "introduction"
     t.boolean "is_active", default: true
     t.datetime "created_at", null: false
