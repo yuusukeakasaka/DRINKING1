@@ -8,6 +8,7 @@ class User < ApplicationRecord
   attachment :icon_image
 
   has_many :posts, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
 
 
   def active_for_authentication?
