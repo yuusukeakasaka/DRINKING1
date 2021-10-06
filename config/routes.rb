@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     get "search", on: :collection
   end
+  resources :recruitments, only:[:new, :create, :index, :destroy]
 
 
   end
