@@ -10,5 +10,11 @@
 <%= recruitment.user.name %>
 <%= recruitment.recruitment_post %>
 
+<% if recruitment.user == current_user %>
+<div>
+  <%= link_to "削除", recruitment_path(recruitment), method: :delete %>
+</div>
+<% end %>
+
 <% end %>
 

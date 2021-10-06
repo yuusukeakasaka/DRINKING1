@@ -16,8 +16,7 @@ class Public::RecruitmentsController < ApplicationController
   end
 
   def destroy
-    @recruitment = Recruitment.find(params[:id])
-    @recruitment.destroy
+    Recruitment.find_by(id: params[:id]).destroy
     redirect_to recruitments_path
   end
 
