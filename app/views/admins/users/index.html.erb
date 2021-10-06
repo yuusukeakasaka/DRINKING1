@@ -1,1 +1,14 @@
 <h1>会員一覧</h1>
+
+<% @users.each do |user| %>
+
+<%= user.id %>
+<%= user.name %>
+
+<% if user.is_active == true %>
+<p>有効</p>
+<% elsif user.is_active == false %>
+<p>退会</p>
+<% end %>
+
+<% end %>
