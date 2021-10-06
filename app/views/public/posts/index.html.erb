@@ -1,5 +1,12 @@
 <h1>投稿一覧</h1>
 
+<h3>記事検索</h3>
+<%= form_tag :search_posts, method: :get, class: "search" do %>
+  <%= text_field_tag "q", params[:q] %>
+  <%= submit_tag "検索" %>
+<% end %>
+
+
 <% @posts.each do |post| %>
 <div>
 

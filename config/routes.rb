@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   resources :posts do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
+    get "search", on: :collection
   end
 
+
   end
+
+
 end
