@@ -1,0 +1,14 @@
+<h1>リモート飲み募集</h1>
+<div>ここでは様々なサイトなどでリモート飲みを<br>
+     楽しむための募集を募る掲示板です。
+</div>
+
+<%= link_to "募集する", new_recruitment_path %>
+
+<% @recruitments.each do |recruitment| %>
+
+<%= recruitment.user.name %>
+<%= recruitment.recruitment_post %>
+
+<% end %>
+

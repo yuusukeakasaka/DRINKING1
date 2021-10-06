@@ -1,0 +1,9 @@
+<h1>新規募集</h1>
+
+<%= form_with model: @recruitment, local:true do |f| %>
+
+<%= f.text_area :recruitment_post %>
+
+<%= f.submit '募集する' %>
+
+<% end %>
