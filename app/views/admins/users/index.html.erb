@@ -2,8 +2,12 @@
 
 <% @users.each do |user| %>
 
+
 <%= user.id %>
+
+<%= link_to admins_user_path(user) do %>
 <%= user.name %>
+<% end %>
 
 <% if user.is_active == true %>
 <p>有効</p>

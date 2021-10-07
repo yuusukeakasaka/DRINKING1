@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root :to => "homes#top"
-    resources :users, only:[:index, :edit, :update]
+    resources :users, only:[:index, :edit, :update, :show]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
