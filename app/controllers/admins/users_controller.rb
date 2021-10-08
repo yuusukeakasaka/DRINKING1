@@ -5,11 +5,19 @@ class Admins::UsersController < ApplicationController
   end
 
   def update
-    redirect_to admins_users
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to admins_users_path
   end
 
   def show
     @user = User.find(params[:id])
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:is_active)
   end
 
 end
