@@ -1,0 +1,10 @@
+<h1>募集一覧</h1>
+
+<% @recruitments.each do |recruitment| %>
+
+<%= recruitment.user.name %>
+<%= recruitment.recruitment_post %>
+
+<%= link_to "削除", admins_recruitment_path(recruitment), method: :delete %>
+
+<% end %>
