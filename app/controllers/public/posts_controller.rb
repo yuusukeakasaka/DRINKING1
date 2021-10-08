@@ -12,7 +12,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.reverse_order
+    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).reverse_order #フォローワーと自分の投稿一覧
     @post_comment = PostComment.new
   end
 
