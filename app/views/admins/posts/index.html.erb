@@ -8,4 +8,8 @@
 <p>タイトル：<%= post.title %></p>
  <p>本文：<%= post.text %></p>
 
+ <div>
+  <%= link_to "削除", admins_post_path(post), method: :delete %>
+</div>
+
 <% end %>
