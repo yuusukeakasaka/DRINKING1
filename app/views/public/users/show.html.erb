@@ -22,3 +22,10 @@
  <% if @user.id == current_user.id %>
  <%= link_to "新規投稿", new_post_path %>
  <% end %>
+
+ <% @posts.each do |post| %>
+
+ <%= post.title %>
+ <%= post.text %>
+
+ <% end %>
