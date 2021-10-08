@@ -3,8 +3,8 @@
 <% @users.each do |user| %>
 
 
-<%= user.id %>
 
+<%= user.id %>
 <%= link_to admins_user_path(user) do %>
 <%= user.name %>
 <% end %>
