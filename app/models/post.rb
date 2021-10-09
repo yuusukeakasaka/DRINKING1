@@ -5,8 +5,8 @@ has_many :post_comments, dependent: :destroy
 
 attachment :image
 
-validates :text, presence: true
-validates :title, presence: true
+validates :text, presence: true, length: { maximum: 300 }
+validates :title, presence: true, length: { maximum: 30 }
 
 has_many :favorites, dependent: :destroy
 
