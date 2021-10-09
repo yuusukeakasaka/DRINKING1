@@ -1,31 +1,57 @@
-<h1>マイページ</h1>
-<h3><%= @user.name %></h3>
- <%= attachment_image_tag @user, :icon_image, :size =>'100x100', format: 'jpeg', fallback: "no_image.png" %>
- <%= @user.introduction %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-8 my-5">
+    </div>
+  </div>
+
+  <table class="table table-bordered">
+    <tbody>
+      <% unless current_user == @user %>
+      <% if current_user.following?(@user) %>
+      <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn-x btn-danger" %>
+      <% else %>
+      <%= link_to "フォロー", user_relationships_path(@user.id), method: :POST, class: "btn-x btn-warning" %>
+      <% end %>
+      <% end %>
 
 
- <% if @user.id == current_user.id %>
- <%= link_to "プロフィール編集", edit_user_path(@user) %>
- <% end %>
+      <tr>
+        <td width="15%">
+          <%= attachment_image_tag @user, :icon_image, :size =>'100x100', format: 'jpeg', fallback: "no_image.png" %><br>
+          <br>
+          <%= link_to "フォロー", user_followings_path(@user.id), class: "btn-x btn-success" %> <%= @user.followings.count %>
+          <%= link_to "フォロワー", user_followers_path(@user.id), class: "btn-x btn-success" %> <%= @user.followers.count %>
+        </td>
+        <td width="35%">
+          名前:<%= @user.name %><br>
+          自己紹介<br>
+          <%= @user.introduction %>
+          </td>
+      </tr>
 
-<div><%= link_to "フォロー", user_followings_path(@user.id) %>: <%= @user.followings.count %></div>
-<div><%= link_to "フォロワー", user_followers_path(@user.id) %>: <%= @user.followers.count %></div>
-<% unless current_user == @user %>
-<% if current_user.following?(@user) %>
-  <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete %>
-<% else %>
-  <%= link_to "フォロー", user_relationships_path(@user.id), method: :POST %>
-<% end %>
-<% end %>
+      <tr>
+        <td>
+          <% if @user.id == current_user.id %>
+          <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn-x btn-info" %>
+          <% end %>
+          <% if @user.id == current_user.id %>
+          <%= link_to "新規投稿", new_post_path, class: "btn-x btn-info" %>
+          <% end %>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>最新の投稿</td>
+        <td><% @posts.each do |post| %>
+        　　<%= link_to post_path(post.id) do %>
+            <%= post.title %>
+            <% end %><br>
+            <% end %>
+            <%= paginate @posts %>
+        </td>
+      </tr>
+    </tbody>
 
 
- <% if @user.id == current_user.id %>
- <%= link_to "新規投稿", new_post_path %>
- <% end %>
 
- <% @posts.each do |post| %>
-
- <%= post.title %>
- <%= post.text %>
-
- <% end %>
