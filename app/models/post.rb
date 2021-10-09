@@ -5,6 +5,9 @@ has_many :post_comments, dependent: :destroy
 
 attachment :image
 
+validates :text, presence: true
+validates :title, presence: true
+
 has_many :favorites, dependent: :destroy
 
   def favorited_by?(user)

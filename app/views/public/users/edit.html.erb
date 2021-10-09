@@ -1,4 +1,7 @@
 <h1>プロフィール編集</h1>
+<% if @user.errors.any? %>
+名前は必須です
+<% end %>
 <%= form_with model:@user, local:true do |f| %>
 <h3>アイコン</h3>
 <%= f.attachment_field :icon_image, placeholder: "プロフィール画像" %>

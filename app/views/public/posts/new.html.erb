@@ -1,4 +1,7 @@
 <h1>新規投稿</h1>
+<% if @post.errors.any? %>
+タイトルと本文は必須です
+<% end %>
 
 <%= form_with model: @post, local:true do |f| %>
 <h4>画像</h4>
