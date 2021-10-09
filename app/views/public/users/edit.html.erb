@@ -1,19 +1,43 @@
-<h1>プロフィール編集</h1>
 <% if @user.errors.any? %>
-名前は必須です
+<p>名前が長すぎるか、空欄になっています。<br>
+   もしくは自己紹介が長すぎます。
+</p>
 <% end %>
+<div class="container">
+ <div class= "row">
+　<div class="col-md-4 my-8">
+   <h4>プロフィール編集</h4>
+  </div>
+ </div>
 <%= form_with model:@user, local:true do |f| %>
-<h3>アイコン</h3>
-<%= f.attachment_field :icon_image, placeholder: "プロフィール画像" %>
 
- <h3>ニックネーム</h3>
-<%= f.text_field :name, autofocus: true, placeholder:"名前"%>
-
-<h3>紹介文</h3>
-<%= f.text_field :introduction, autofocus: true, placeholder:"自己紹介を書いてください。" %>
-
-<%= f.submit "変更を保存" %>
-
-<%= link_to"退会する", user_unsubscribe_path %>
-
- <% end %>
+<div class="row">
+  <div class="col-md-10">
+    <table class="table table-borderless">
+      <tbody>
+       <tr>
+        <td>アイコン</td>
+        <td><%= f.attachment_field :icon_image, placeholder: "プロフィール画像" %></td>
+       </tr>
+       <tr>
+        <td>名前</td>
+        <td><%= f.text_field :name, autofocus: true, placeholder:"名前"%></td>
+       </tr>
+       <tr>
+        <td>自己紹介</td>
+        <td><%= f.text_area :introduction, autofocus: true, size: "40x20", placeholder:"自己紹介を書いてください。(140文字以内)" %></td>
+       </tr>
+       <tr>
+        <td><%= f.submit "変更を保存", class: "btn-x btn-success" %></td>
+        <td></td>
+       </tr>
+       <tr>
+        <td><%= link_to"退会する", user_unsubscribe_path, class: "btn-sm btn-danger" %></td>
+        <td></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   <% end %>
+ </div>
+</div>

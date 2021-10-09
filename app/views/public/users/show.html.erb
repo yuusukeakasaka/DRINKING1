@@ -1,11 +1,10 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-1"></div>
     <div class="col-md-8 my-5">
     </div>
   </div>
 
-  <table class="table table-bordered">
+  <table class="table">
     <tbody>
       <% unless current_user == @user %>
       <% if current_user.following?(@user) %>
@@ -20,8 +19,8 @@
         <td width="15%">
           <%= attachment_image_tag @user, :icon_image, :size =>'100x100', format: 'jpeg', fallback: "no_image.png" %><br>
           <br>
-          <%= link_to "フォロー", user_followings_path(@user.id), class: "btn-x btn-success" %> <%= @user.followings.count %>
-          <%= link_to "フォロワー", user_followers_path(@user.id), class: "btn-x btn-success" %> <%= @user.followers.count %>
+          <%= link_to "フォロー", user_followings_path(@user.id) %> <%= @user.followings.count %>
+          <%= link_to "フォロワー", user_followers_path(@user.id) %> <%= @user.followers.count %>
         </td>
         <td width="35%">
           名前:<%= @user.name %><br>
@@ -33,10 +32,11 @@
       <tr>
         <td>
           <% if @user.id == current_user.id %>
-          <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn-x btn-info" %>
+          <%= link_to "プロフィール編集", edit_user_path(@user) %>
           <% end %>
+          <br>
           <% if @user.id == current_user.id %>
-          <%= link_to "新規投稿", new_post_path, class: "btn-x btn-info" %>
+          <%= link_to "新規投稿", new_post_path %>
           <% end %>
         </td>
         <td></td>
