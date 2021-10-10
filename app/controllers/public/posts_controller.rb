@@ -15,7 +15,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).reverse_order #フォローワーと自分の投稿一覧
+    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).page(params[:page]).per(5).reverse_order #フォローワーと自分の投稿一覧
   end
 
   def show
@@ -31,6 +31,7 @@ class Public::PostsController < ApplicationController
 
   def search
     @posts = Post.search(params[:q])
+    @posts = @posts.page(params[:page]).per(5).reverse_order
     render "index"
   end
 

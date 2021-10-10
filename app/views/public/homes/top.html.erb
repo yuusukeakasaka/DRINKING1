@@ -1,33 +1,66 @@
-<h1>投稿一覧</h1>
-
-
-<h3>記事検索</h3>
-<%= form_tag :search_posts, method: :get, class: "search" do %>
-  <%= text_field_tag "q", params[:q] %>
-  <%= submit_tag "検索" %>
-<% end %>
-
-
-<% @posts.each do |post| %>
-
-<div>
-
-  <%= attachment_image_tag post, :image, size: "200x200", format: 'jpeg' %>
-  <p>ユーザーネーム：<%= post.user.name %></p>
-  <p>投稿ユーザー画像：<%= attachment_image_tag post.user, :icon_image, :fill, 60, 60, fallback: "no_image.png" %></p>
-  <p>タイトル：
-  <% if user_signed_in? %>
-  <%= link_to post_path(post.id) do %>
-  <%= post.title %></p>
-  <% end %>
-  <% else %>
-  <%= post.title %>
-  <% end %>
-  <p>本文：<%= post.text %></p>
+<div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12 my-3"></div>
+  </div>
+    <div class="row">
+    <div class="col-md-1 pd-2"></div>
+    <div class="col-md-8"><h4 class="text-center">投稿一覧</h4></div>
+    <div class="col-md-2">
+     <h5 class="text-center">記事検索</h5>
+      <div class="col-md-2">
+        <%= form_tag :search_posts, method: :get, class: "search" do %>
+        <%= text_field_tag "q", params[:q] %>
+        <%= submit_tag "検索" %>
+        <% end %>
+      </div>
+    </div>
+    </div>
+ <div class="row">
+  <div class="col-md-8 text-center">
+    <table class="table table-borderless">
+      <tbody>
+      <% @posts.each do |post| %>
+       <tr>
+         <td class ="col-md-2"><%= attachment_image_tag post.user, :icon_image, :fill, 60, 60, fallback: "no_image.png" %></td>
+         <td class ="col-md-4"><%= attachment_image_tag post, :image, size: "100x100", format: 'jpeg' %></td>
+       </tr>
+       <tr>
+         <td><%= post.user.name %></td>
+         <td></td>
+       </tr>
+       <tr>
+         <td>タイトル</td>
+         <td>
+            <% if user_signed_in? %>
+            <%= link_to post_path(post.id) do %>
+            <%= post.title %>
+            <% end %>
+            <% else %>
+            <%= post.title %>
+            <% end %>
+         </td>
+       </tr>
+       <tr>
+         <td>本文</td>
+         <td><%= post.text %></td>
+       </tr>
+       <tr>
+         <td>
+           <% if user_signed_in? %>
+           <%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %>
+           <% else %>
+           <%= "#{post.post_comments.count} コメント" %>
+           <% end %>
+         </td>
+         <td></td>
+       </tr>
+      <% end %>
+       <tr>
+         <td><%= paginate @posts %></td>
+         <td></td>
+       </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-  <% if user_signed_in? %>
- <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
-  <% else %>
-  <p><%= "#{post.post_comments.count} コメント" %></p>
-  <% end %>
-<% end %>
+</div>

@@ -1,7 +1,7 @@
 class Public::HomesController < ApplicationController
 
   def top
-    @posts = Post.all.reverse_order
+    @posts = Post.all.page(params[:page]).per(5).reverse_order
     @post_comment = PostComment.new
   end
 
@@ -10,6 +10,7 @@ class Public::HomesController < ApplicationController
 
   def search
     @posts = Post.search(params[:q])
+    @posts = @posts.page(params[:page])
     render "top"
   end
 
