@@ -1,7 +1,28 @@
-<h1>退会</h1>
-
-<h3>本当に退会しますか？</h3>
-<div>退会すると今までの投稿が見れなくなります。</div>
-
-<%= link_to "退会しない", user_path %>
-<%= link_to "退会する", user_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？" %>
+<div class="container-fluid">
+ <div class="row">
+  <div class="col-md-12 mx-auto"></div>
+ </div>
+ <div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4 py-5">
+   <h3 class="text-center">本当に退会しますか？</h3>
+  </div>
+   <div class="col-md-4"></div>
+ </div>
+  <div class="row">
+  <div class="col-md-12 pb-5">
+   <div class="text-center">
+   退会すると今までの投稿が見れなくなります。
+   </div>
+  </div>
+  </div>
+  <div class="row">
+   <div class="col-md-12 text-center">
+     <div class="text-center">
+     <%= link_to "退会しない", user_path, class: "btn-primary btn-lg text-center" %>
+     <%= link_to "退会する", user_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn-danger btn-sm text-center" %>
+     </div>
+   </div>
+  </div>
+ </div>
+</div>
