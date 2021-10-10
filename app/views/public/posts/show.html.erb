@@ -1,3 +1,5 @@
+
+
 <div class="container">
  <div class= "row">
 　<div class="col-md-4 my-8">
@@ -21,6 +23,10 @@
          <td></td>
        </tr>
        <tr>
+         <td>投稿日時</td>
+         <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+       </tr>
+       <tr>
          <td>タイトル</td>
          <td><%= @post.title %></td>
        </tr>
@@ -29,13 +35,9 @@
          <td><%= @post.text %></td>
        </tr>
        <tr>
-         <td>投稿日時</td>
-         <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
-       </tr>
-       <tr>
          <td>
             <% if @post.user == current_user %>
-            <%= link_to "削除", post_path(@post), method: :delete %>
+            <%= link_to "削除", post_path(@post), method: :delete, class: "btn-x btn-danger" %>
             <% end %>
          </td>
          <td></td>
@@ -62,7 +64,8 @@
              <% end %>
              <%= post_comment.comment %>
              <% if post_comment.user == current_user %>
-             <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+             <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn-x btn-danger" %>
+             <% end %><br>
              <% end %>
          </td>
        </tr>
@@ -71,12 +74,11 @@
          </td>
          <td></td>
        </tr>
-      <% end %>
        <tr>
          <td></td>
          <td>
            <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
-           <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+           <%= f.text_area :comment, size: "40x10", placeholder: "コメントをここに。140文字以内" %>
            <%= f.submit "送信する" %>
            <% end %>
            </td>
