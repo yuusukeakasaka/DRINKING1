@@ -17,8 +17,8 @@
     </div>
  <div class="row">
   <div class="col-md-8 text-center">
+        <% @posts.each do |post| %>
     <table class="table table-borderless">
-      <% @posts.each do |post| %>
       <tbody class="card h-50">
        <tr>
          <td class ="col-md-2"><%= attachment_image_tag post.user, :icon_image, :fill, 60, 60, fallback: "no_image.png" %></td>
@@ -56,11 +56,12 @@
        </tr>
       <% end %>
        <tr>
-         <td><%= paginate @posts %></td>
+         <td></td>
          <td></td>
        </tr>
       </tbody>
     </table>
+    <%= paginate @posts %>
   </div>
 </div>
 </div>
