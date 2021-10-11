@@ -18,8 +18,8 @@
  <div class="row">
   <div class="col-md-8 text-center">
     <table class="table table-borderless">
-      <tbody>
       <% @posts.each do |post| %>
+      <tbody class="card h-50">
        <tr>
          <td class ="col-md-2"><%= attachment_image_tag post.user, :icon_image, :fill, 60, 60, fallback: "no_image.png" %></td>
          <td class ="col-md-4"><%= attachment_image_tag post, :image, size: "100x100", format: 'jpeg' %></td>

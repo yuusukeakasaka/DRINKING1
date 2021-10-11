@@ -1,18 +1,23 @@
-<tr>
- <% if @users.count > 0 %>
-  <th>name</th>
-  <th></th>
-</tr>
-<tbody>
- <% @users.each do |user| %>
- <tr>
-  <td><%= user.name %></td>
-  <td>フォロー数: <%= user.followings.count %></td>
-  <td>フォロワー数: <%= user.followers.count %></td>
-  <td><%= link_to "Show", user %></td>
- <tr>
+<div class="container-fluid">
+   <div class="row">
+    <div class="col-md-10 my-3"><h4 class="text-center">フォローされているユーザー一覧</h4></div>
+   </div>
+   <div class="row">
+   <div class="col-md-12 my-3"></div>
+   </div>
+   <% if @users.count > 0 %>
+    <% @users.each do |user| %>
+   <div class="row">
+   <div class="col-md-1"></div>
+  <div class="col-md-2"><%= user.name %></div>
+  <div class="col-md-2">フォロー数: <%= user.followings.count %></div>
+  <div class="col-md-2">フォロワー数: <%= user.followers.count %></div>
+  <div class="col-md-1"><%= link_to "詳細を見る", user %></div>
+  </div>
  <% end %>
-</tbody>
+</div>
+</div>
+</div>
  <% else %>
   <th>ユーザーはいません</th>
 <% end %>
