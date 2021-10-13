@@ -1,20 +1,32 @@
-<h1>リモート飲み募集</h1>
-<div>ここでは様々なサイトなどでリモート飲みを<br>
-     楽しむための募集を募る掲示板です。
-</div>
+<div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12 my-3"></div>
+  </div>
+  <div class="col-md-10 my-3 text-center"><h3>リモート飲み募集</h3></div>
+  <div class="col-md-10 text-center">ここでは様々なサイトなどでリモート飲みを<br> 楽しむための募集を募る掲示板です。
+                                     <br>リンクを貼って他のサイトなどで<br>お楽しみください。
+  </div>
 
-<%= link_to "募集する", new_recruitment_path %>
-
-<% @recruitments.each do |recruitment| %>
-
-<%= recruitment.user.name %>
-<%= recruitment.recruitment_post %>
+  <div class="col-md-10 my-3 text-center"><%= link_to "募集する", new_recruitment_path %></div>
+  </div>
+  <% @recruitments.each do |recruitment| %>
+  <table class="table table-borderless">
+   <tbody class="card h-50">
+     <tr>
+       <td class="col-md-4">名前</td>
+       <td class="col-md-2"><div class="text-left"><%= recruitment.user.name %></div></td>
+     </tr>
+     <tr>
+       <td class="col-md-4">募集内容</td>
+       <td class="col-md-2"><div class="text-center"><%= recruitment.recruitment_post %></div></td>
+     </tr>
 
 <% if recruitment.user == current_user %>
 <div>
   <%= link_to "削除", recruitment_path(recruitment), method: :delete %>
 </div>
 <% end %>
-
+  </table>
+  </tbody>
 <% end %>
-
+</div>

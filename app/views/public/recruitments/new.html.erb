@@ -1,9 +1,30 @@
-<h1>新規募集</h1>
-
-<%= form_with model: @recruitment, local:true do |f| %>
-
-<%= f.text_area :recruitment_post %>
-
-<%= f.submit '募集する' %>
-
+<% if @recruitment.errors.any? %>
+<p>タイトルか本文が空欄になっているか、<br>
+   文字数が長すぎます。
 <% end %>
+
+
+<div class="container">
+ <div class= "row">
+　<div class="col-md-4 my-8">
+   <h4>新規募集</h4>
+  </div>
+ </div>
+<%= form_with model: @recruitment, local:true do |f| %>
+<div class="row">
+  <div class="col-md-10">
+    <table class="table table-borderless">
+      <tbody>
+       <tr>
+         <td>募集内容</td>
+         <td><%= f.text_area :recruitment_post, size: "40x20", placeholder:"本文を書いてください。(300文字以内)" %></td>
+       </tr>
+       <tr>
+         <td></td>
+         <td><%= f.submit '募集する' %></td>
+       </tr>
+       <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
