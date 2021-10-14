@@ -16,21 +16,22 @@
     </div>
     </div>
  <div class="row">
+  <div class="col-md-1"></div>
   <div class="col-md-8 text-center">
         <% @posts.each do |post| %>
     <table class="table table-borderless">
-      <tbody class="card h-50">
+      <tbody class="card h-30">
        <tr>
-         <td class ="col-md-2"><%= attachment_image_tag post.user, :icon_image, :fill, 60, 60, fallback: "no_image.png" %></td>
-         <td class ="col-md-4"><%= attachment_image_tag post, :image, size: "100x100", format: 'jpeg' %></td>
+         <td class ="col-md-2 text-left"><%= attachment_image_tag post.user, :icon_image, :fill, 60, 60, fallback: "no_image.png" %></td>
+         <td class ="col-md-4 text-left"><%= attachment_image_tag post, :image, size: "100x100", format: 'jpeg' %></td>
        </tr>
        <tr>
-         <td><%= post.user.name %></td>
-         <td></td>
+         <td class ="col-md-2 text-left"><%= post.user.name %></td>
+         <td class ="col-md-4 text-left"></td>
        </tr>
        <tr>
-         <td>タイトル</td>
-         <td>
+         <td class ="col-md-2 text-left">タイトル</td>
+         <td class ="col-md-4 text-left">
             <% if user_signed_in? %>
             <%= link_to post_path(post.id) do %>
             <%= post.title %>
@@ -41,18 +42,22 @@
          </td>
        </tr>
        <tr>
-         <td>本文</td>
-         <td><%= post.text %></td>
+         <td class ="col-md-2 text-left"></td>
+         <td class ="col-md-4 text-left"></td>
        </tr>
        <tr>
-         <td>
+         <td class ="col-md-2 text-left">本文</td>
+         <td class "col-md-4 text-left"><%= post.text %></td>
+       </tr>
+       <tr>
+         <td class ="col-md-2 text-left">
            <% if user_signed_in? %>
            <%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %>
            <% else %>
            <%= "#{post.post_comments.count} コメント" %>
            <% end %>
          </td>
-         <td></td>
+         <td class ="col-md-4 text-left"></td>
        </tr>
       <% end %>
        <tr>
