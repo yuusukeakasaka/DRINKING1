@@ -13,7 +13,7 @@
      <div class="col-md-8 text-center">
       <% @recruitments.each do |recruitment| %>
        <table class="table table-borderless">
-        <tbody class="col-md-10 text-center card h-100">
+        <tbody class="card h-30">
          <tr>
           <td class="col-md-4">名前</td>
           <td class="col-md-2"><div class="pull-left"><%= recruitment.user.name %></div></td>
@@ -22,14 +22,14 @@
           <td class="col-md-4">募集内容</td>
           <td class="col-md-2"><div class="pull-left"><%= recruitment.recruitment_post %></div></td>
          </tr>
-         <% if recruitment.user == current_user %>
-         <%= link_to "削除", recruitment_path(recruitment), method: :delete %>
-         <% end %>
-        </div>
-   </div>
-  </table>
-  </tbody>
-  </div>
-  </div>
-<% end %>
+         <p>
+          <% if recruitment.user == current_user %>
+          <%= link_to "削除", recruitment_path(recruitment), method: :delete %>
+          <% end %>
+         </p>
+        </tbody>
+      </table>
+     </div>
+    </div>
+    <% end %>
 </div>

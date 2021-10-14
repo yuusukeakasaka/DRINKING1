@@ -1,7 +1,7 @@
 class Admins::PostsController < ApplicationController
 
   def index
-    @posts = Post.all.reverse_order
+    @posts = Post.all.page(params[:page]).per(5).reverse_order
   end
 
   def destroy
