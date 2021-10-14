@@ -19,7 +19,7 @@
        <td class ="col-md-4 text-left"><%= attachment_image_tag post, :image, size: "100x100", format: 'jpeg' %></td>
       </tr>
       <tr>
-       <td class ="col-md-2 text-left"><%= post.user.name %></td>
+       <td class ="col-md-2 text-left"><%= link_to admins_user_path(post.user.id) do %><%= post.user.name %><% end %></td>
        <td class ="col-md-4 text-left"></td>
       </tr>
        <tr>

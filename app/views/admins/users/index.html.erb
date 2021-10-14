@@ -1,18 +1,34 @@
-<h1>会員一覧</h1>
-
-<% @users.each do |user| %>
-
-
-
-<%= user.id %>
-<%= link_to admins_user_path(user) do %>
-<%= user.name %>
-<% end %>
-
-<% if user.is_active == true %>
-<p>有効</p>
-<% elsif user.is_active == false %>
-<p>退会</p>
-<% end %>
-
-<% end %>
+<div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12 my-3"></div>
+  　</div>
+    <div class="row">
+    <div class="col-md-1 pd-2"></div>
+    <div class="col-md-8"><h4 class="text-center">会員一覧</h4></div>
+    <div class="col-md-2">
+      </div>
+ <div class="row">
+   <div class="col-md-10"></div>
+    <div class="col-md-2 text-center">
+　　<% @users.each do |user| %>
+   <table class="table table-borderless">
+      <tbody class="card h-60">
+       <tr>
+         <td class ="col-md-2"><%= user.id %>
+                               <%= link_to admins_user_path(user) do %>
+                               <%= user.name %>
+                               <% end %>
+         </td>
+         <td class ="col-md-2">
+           <% if user.is_active == true %>
+           <div class="col-md-4">有効</div>
+           <% elsif user.is_active == false %>
+           <div class="col-md-4">退会</div>
+           <% end %>
+         </td>
+       </tr>
+    </tbody>
+   </table>
+  <% end %>
+  </div>
+</div>
