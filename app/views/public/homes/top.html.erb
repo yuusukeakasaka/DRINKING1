@@ -47,7 +47,15 @@
        </tr>
        <tr>
          <td class ="col-md-2 text-left">本文</td>
-         <td class "col-md-4 text-left"><%= post.text %></td>
+         <td class "col-md-4 text-left">
+          <% if user_signed_in? %>
+          <%= post.text %>
+          <% else %>
+          <%= truncate(post.text, :length => 10) %>
+          本文を全て読むには登録が必要です。
+          <%= link_to "登録する", new_user_registration_path %>
+          <% end %>
+          </td>
        </tr>
        <tr>
          <td class ="col-md-2 text-left">
