@@ -15,7 +15,7 @@
         <div class="container-fluid">
 
           <% if admin_signed_in? %>
-           <h5><%= link_to image_tag("logo.jpg", :size =>'200x200', class: "image"), admins_root_path, class: 'nav-link text-dark' %></h3>
+           <h5><%= link_to image_tag("logo.jpg", :size =>'200x200', class: "image"), admins_posts_path, class: 'nav-link text-dark' %></h3>
            <% else %>
            <h5><%= link_to image_tag("logo.jpg", :size =>'200x200', class: "image"), root_path, class: 'nav-link text-dark' %></h3>
            <% end %>
