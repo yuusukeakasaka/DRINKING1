@@ -15,21 +15,26 @@
        <table class="table table-borderless">
         <tbody class="card h-30">
          <tr>
-          <td class="col-md-4">名前</td>
-          <td class="col-md-2"><div class="pull-left"><%= recruitment.user.name %></div></td>
+          <td class="col-md-1">名前</td>
+          <td class="col-md-1"><%= recruitment.user.name %></td>
          </tr>
          <tr>
-          <td class="col-md-4">募集内容</td>
-          <td class="col-md-2"><div class="pull-left"><%= recruitment.recruitment_post %></div></td>
+          <td class="col-md-1">募集内容</td>
+          <td class="col-md-1"><%= recruitment.recruitment_post %></td>
          </tr>
-         <p>
+         <tr>
+          <td></td>
+          <td>
           <% if recruitment.user == current_user %>
           <%= link_to "削除", recruitment_path(recruitment), method: :delete %>
           <% end %>
-         </p>
+          </td>
+         <% end %>
         </tbody>
       </table>
+    <div class="row">
+    <div class="col-md-12 textcenter"><h4 class="text-center"><%= paginate(@recruitments) %></h4></div>
+   </div>
      </div>
     </div>
-    <% end %>
 </div>

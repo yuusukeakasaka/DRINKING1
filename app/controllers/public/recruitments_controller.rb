@@ -15,7 +15,7 @@ class Public::RecruitmentsController < ApplicationController
   end
 
   def index
-    @recruitments = Recruitment.all
+    @recruitments = Recruitment.all.page(params[:page]).per(5).reverse_order
   end
 
   def destroy

@@ -1,7 +1,7 @@
 class Admins::RecruitmentsController < ApplicationController
 
   def index
-    @recruitments = Recruitment.all.reverse_order
+    @recruitments = Recruitment.all.page(params[:page]).per(10).reverse_order
   end
 
   def destroy

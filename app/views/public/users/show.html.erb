@@ -19,8 +19,8 @@
         <td width="15%">
           <%= attachment_image_tag @user, :icon_image, :size =>'100x100', format: 'jpeg', fallback: "no_image.png" %><br>
           <br>
-          <%= link_to "フォロー", user_followings_path(@user.id) %> <%= @user.followings.count %>
-          <%= link_to "フォロワー", user_followers_path(@user.id) %> <%= @user.followers.count %>
+          <%= link_to "フォローしている", user_followings_path(@user.id) %> <%= @user.followings.count %>
+          <%= link_to "フォローされている", user_followers_path(@user.id) %> <%= @user.followers.count %>
         </td>
         <td width="35%">
           名前:<%= @user.name %><br>
