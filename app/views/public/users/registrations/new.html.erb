@@ -1,3 +1,8 @@
+<% if @user.errors.any? %>
+<p>空欄があるかパスワードを確認してください</p>
+<% end %>
+
+
 <div id="notice"></div>
 <div class="container">
   <div class="row">
@@ -6,7 +11,7 @@
     </div>
   </div>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/users/shared/error_messages", resource: resource %>
+
 
   <div class="row">
     <table class="table table-borderless">
