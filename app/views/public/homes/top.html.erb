@@ -6,7 +6,7 @@
     <div class="col-md-1 pd-2"></div>
     <div class="col-md-8"><h4 class="text-center">投稿一覧</h4></div>
     <div class="col-md-2">
-     <h5 class="text-center">記事検索</h5>
+     <h5 class="text-center">本文</h5>
       <div class="col-md-2">
         <%= form_tag :search_posts, method: :get, class: "search" do %>
         <%= text_field_tag "q", params[:q] %>
@@ -51,8 +51,8 @@
           <% if user_signed_in? %>
           <%= post.text %>
           <% else %>
-          <%= truncate(post.text, :length => 10) %>
-          本文を全て読むには登録が必要です。
+          <%= truncate(post.text, :length => 10) %><br>
+          <P class ="col-md-12">本文を全て読むには登録が必要です。</p>
           <%= link_to "登録する", new_user_registration_path %>
           <% end %>
           </td>
