@@ -14,16 +14,16 @@
    <table class="table table-borderless">
       <tbody class="card h-60">
        <tr>
-         <td class ="col-md-2"><%= user.id %>
+         <td><%= user.id %>
                                <%= link_to admins_user_path(user) do %>
                                <%= user.name %>
                                <% end %>
          </td>
-         <td class ="col-md-2">
+         <td>
            <% if user.is_active == true %>
-           <div class="col-md-4">有効</div>
+           <div>有効</div>
            <% elsif user.is_active == false %>
-           <div class="col-md-4">退会</div>
+           <div>退会</div>
            <% end %>
          </td>
        </tr>
