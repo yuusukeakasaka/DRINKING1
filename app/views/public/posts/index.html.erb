@@ -17,6 +17,7 @@
     </div>
  <div class="row">
   <div class="col-md-8 text-center">
+     <% if @posts.count > 0 %>
         <% @posts.each do |post| %>
     <table class="table table-borderless">
       <tbody class="card h-50">
@@ -59,6 +60,11 @@
          <td></td>
          <td></td>
        </tr>
+        <% else %>
+       <th>投稿がありません。<br>
+           ユーザーをフォローするか、自分で投稿してみましょう！
+       </th>
+      <% end %>
       </tbody>
     </table>
   <div class="row">
